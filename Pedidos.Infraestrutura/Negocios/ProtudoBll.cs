@@ -40,7 +40,7 @@ namespace Pedidos.Infraestrutura.Negocios
 
         public async Task AtualizarProduto(int pIdPedido, int pIdProduto, ProdutoDto produtoDto)
         {
-            var pedido = await _pedidoBll.ObterPedidoPorId(pIdPedido);
+            var pedido = await _pedidoBll.ObterPorId(pIdPedido);
 
             if(pedido is Pedido && pedido.DtPagamento is null)
             {
@@ -55,6 +55,7 @@ namespace Pedidos.Infraestrutura.Negocios
 
         public async Task RemoverProduto(int pId) 
         {
+
             Produto produto = await _produtoRepository.ObertePorId(pId);
 
             if(produto is Produto && produto.Pedido.DtPagamento is null)
@@ -62,7 +63,7 @@ namespace Pedidos.Infraestrutura.Negocios
                 _produtoRepository.Deleta(produto);
                 return;
             }
-
+            
             throw new InvalidOperationException($"O pedido com ID {produto.IdProduto}, encontra-se fechado na data {produto.Pedido.DtPagamento?.ToString("dd/MM/yyyy")}.");
         }
     }

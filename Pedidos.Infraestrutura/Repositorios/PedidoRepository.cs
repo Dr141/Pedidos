@@ -30,7 +30,7 @@ namespace Pedidos.Infraestrutura.Repositorios
 
         public async Task<List<Pedido>> ObterTodos()
         {
-            return await GetAllAsync();
+            return await Contexto.Pedidos.Include(pe => pe.Produtos).ToListAsync();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Pedidos.API.Controllers
 
         // GET: api/<PedidoController>
         [HttpGet]
-        public async Task<IEnumerable<Pedido>> Get()
+        public async Task<IEnumerable<PedidoViewModel>> Get()
         {
             return await _pedidoBll.ObterTodosPedidos();
         }

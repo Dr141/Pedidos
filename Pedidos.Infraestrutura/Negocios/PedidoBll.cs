@@ -22,9 +22,15 @@ namespace Pedidos.Infraestrutura.Negocios
             return await _pedidoRepository.AdicionarPedido(pedido); ;
         }
 
-        public async Task<IEnumerable<Pedido>> ObterTodosPedidos()
+        public async Task<IEnumerable<PedidoViewModel>> ObterTodosPedidos()
         {
-            return await _pedidoRepository.ObterTodos();
+            List<PedidoViewModel> pedidoViewModel = new List<PedidoViewModel>();
+            var pedidos = await _pedidoRepository.ObterTodos();
+            foreach(var pe in pedidos)
+            {
+                pedidoViewModel.Add(_mapper.Map<PedidoViewModel>(pe));
+            }
+            return pedidoViewModel;
         }
 
         public async Task<PedidoViewModel> ObterPedidoPorId(int pId)
@@ -45,7 +51,11 @@ namespace Pedidos.Infraestrutura.Negocios
             {
                 if (!string.IsNullOrEmpty(pedidoDto.Nome)) pedido.Nome = pedidoDto.Nome;
 
-                if (pedido.Pago) pedido.DtPagamento = DateTime.Now;
+                if (pedidoDto.Pago && !pedido.Pago)
+                {
+                    pedido.DtPagamento = DateTime.Now;
+                    pedido.Pago = true;
+                }
 
                 pedido.DtAtualizacao = DateTime.Now;
                 _pedidoRepository.Atualizar(pedido);

@@ -45,7 +45,11 @@ namespace Pedidos.API.Controllers
                 await _produtoBll.RemoverProduto(id);
                 return "Produto removido com sucesso.";
             }
-            catch (Exception ex) 
+            catch (NullReferenceException ex) 
+            {
+                return $"Ocorreu erro: Não foi encontrado produto com o ID {id}";
+            }
+            catch (Exception ex)
             {
                 return $"Ocorreu erro: {ex.Message}";
             }

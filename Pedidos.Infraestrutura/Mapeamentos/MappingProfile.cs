@@ -18,12 +18,14 @@ namespace Pedidos.Infraestrutura.Mapeamentos
             .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
             .ForMember(dest => dest.DtPagamento, opt => opt.MapFrom(src => src.DtPagamento))
             .ForMember(dest => dest.Pago, opt => opt.MapFrom(src => src.Pago))
-            .ForMember(dest => dest.Produtos, opt => opt.MapFrom(src => src.Produtos));
+            .ForMember(dest => dest.Produtos, opt => opt.MapFrom(src => src.Produtos))
+            .ForMember(dest => dest.PedidoId, opt => opt.MapFrom(src => src.IdPedido));
             CreateMap<Produto, ProdutoViewModel>()
            .ForMember(dest => dest.DtCriacao, opt => opt.MapFrom(src => src.DtCriacao))
            .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
            .ForMember(dest => dest.Quantidate, opt => opt.MapFrom(src => src.Quantidate))
-           .ForMember(dest => dest.Valor, opt => opt.MapFrom(src => src.Valor));
+           .ForMember(dest => dest.Valor, opt => opt.MapFrom(src => src.Valor))
+           .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.IdProduto));
         }
     }
 }

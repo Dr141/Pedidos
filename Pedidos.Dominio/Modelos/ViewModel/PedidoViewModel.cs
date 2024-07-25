@@ -2,6 +2,7 @@
 {
     public class PedidoViewModel
     {
+        public int PedidoId { get; set; }
         public DateTime DtCriacao { get; set; } = DateTime.Now;
 
         public string? Nome { get; set; }
