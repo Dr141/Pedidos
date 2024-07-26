@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pedidos.Dominio\Pedidos.Contrato.csproj" />
+    <ProjectReference Include="..\Pedidos.Contrato\Pedidos.Contrato.csproj" />
   </ItemGroup>
 
 </Project>
