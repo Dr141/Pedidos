@@ -51,10 +51,14 @@ namespace Pedidos.Infraestrutura.Negocios
             {
                 if (!string.IsNullOrEmpty(pedidoDto.Nome)) pedido.Nome = pedidoDto.Nome;
 
-                if (pedidoDto.Pago && !pedido.Pago)
+                if (pedidoDto.Pago && !pedido.Pago && pedido.Produtos?.Count > 0)
                 {
                     pedido.DtPagamento = DateTime.Now;
                     pedido.Pago = true;
+                }
+                else
+                {
+                    throw new InvalidOperationException($"O pedido com ID {pId}, precisar ter pelo menos um produto cadastrado para conseguir marcar como pago.");
                 }
 
                 pedido.DtAtualizacao = DateTime.Now;
