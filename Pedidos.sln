@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedidos.API", "Pedidos.API\Pedidos.API.csproj", "{20BDC5DC-15A7-4A42-8640-16F6F69E2C54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedidos.Contrato", "Pedidos.Dominio\Pedidos.Contrato.csproj", "{EB5048FF-F4A8-4832-AC4B-56B9C208AF84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedidos.Contrato", "Pedidos.Contrato\Pedidos.Contrato.csproj", "{EB5048FF-F4A8-4832-AC4B-56B9C208AF84}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedidos.Infraestrutura", "Pedidos.Infraestrutura\Pedidos.Infraestrutura.csproj", "{86FA5F12-0199-4487-8BBC-4A23AB331CC4}"
 EndProject

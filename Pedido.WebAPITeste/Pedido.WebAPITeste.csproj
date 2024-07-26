@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pedidos.API\Pedidos.API.csproj" />
-    <ProjectReference Include="..\Pedidos.Dominio\Pedidos.Contrato.csproj" />
+    <ProjectReference Include="..\Pedidos.Contrato\Pedidos.Contrato.csproj" />
     <ProjectReference Include="..\Pedidos.Infraestrutura\Pedidos.Infraestrutura.csproj" />
   </ItemGroup>
 
