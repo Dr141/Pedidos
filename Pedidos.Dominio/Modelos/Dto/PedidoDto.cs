@@ -1,4 +1,4 @@
-﻿namespace Pedidos.Dominio.Modelos.Dto
+﻿namespace Pedidos.Contrato.Modelos.Dto
 {
     public class PedidoDto
     {

@@ -1,4 +1,4 @@
-﻿using Pedidos.Dominio.Modelos;
+﻿using Pedidos.Contrato.Modelos;
 
 namespace Pedidos.Infraestrutura.Interfaces
 {

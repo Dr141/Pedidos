@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Pedidos.Dominio.Modelos;
-using Pedidos.Dominio.Modelos.Dto;
-using Pedidos.Dominio.Modelos.ViewModel;
+using Pedidos.Contrato.Modelos;
+using Pedidos.Contrato.Modelos.Dto;
+using Pedidos.Contrato.Modelos.ViewModel;
 using Pedidos.Infraestrutura.Interfaces;
 
 namespace Pedidos.Infraestrutura.Negocios
@@ -51,10 +51,14 @@ namespace Pedidos.Infraestrutura.Negocios
             {
                 if (!string.IsNullOrEmpty(pedidoDto.Nome)) pedido.Nome = pedidoDto.Nome;
 
-                if (pedidoDto.Pago && !pedido.Pago)
+                if (pedidoDto.Pago && !pedido.Pago && pedido.Produtos?.Count > 0)
                 {
                     pedido.DtPagamento = DateTime.Now;
                     pedido.Pago = true;
+                }
+                else
+                {
+                    throw new InvalidOperationException($"O pedido com ID {pId}, precisar ter pelo menos um produto cadastrado para conseguir marcar como pago.");
                 }
 
                 pedido.DtAtualizacao = DateTime.Now;

@@ -1,5 +1,5 @@
-﻿using Pedidos.Dominio.Modelos.Dto;
-using Pedidos.Dominio.Modelos;
+﻿using Pedidos.Contrato.Modelos.Dto;
+using Pedidos.Contrato.Modelos;
 using Pedidos.Infraestrutura.Interfaces;
 using AutoMapper;
 
@@ -25,9 +25,8 @@ namespace Pedidos.Infraestrutura.Negocios
             {
                 Produto produto = _mapper.Map<Produto>(pProdutoDto);
                 produto.PedidoId = pIdPedido;
-                await _produtoRepository.AdicionarProduto(produto);
 
-                return produto.IdProduto;
+                return await _produtoRepository.AdicionarProduto(produto); ;
             }
 
             throw new InvalidOperationException($"O pedido com ID {pIdPedido}, encontra-se fechado na data {pedido.DtPagamento?.ToString("dd/MM/yyyy")}.");             

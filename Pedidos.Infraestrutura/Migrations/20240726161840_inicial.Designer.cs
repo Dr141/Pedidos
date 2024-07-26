@@ -12,7 +12,7 @@ using Pedidos.Infraestrutura.Context;
 namespace Pedidos.Infraestrutura.Migrations
 {
     [DbContext(typeof(PedidoDbContexto))]
-    [Migration("20240725202243_inicial")]
+    [Migration("20240726161840_inicial")]
     partial class inicial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Pedidos.Infraestrutura.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Pedidos.Dominio.Modelos.Pedido", b =>
+            modelBuilder.Entity("Pedidos.Contrato.Modelos.Pedido", b =>
                 {
                     b.Property<int>("IdPedido")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,7 @@ namespace Pedidos.Infraestrutura.Migrations
                     b.ToTable("Pedidos");
                 });
 
-            modelBuilder.Entity("Pedidos.Dominio.Modelos.Produto", b =>
+            modelBuilder.Entity("Pedidos.Contrato.Modelos.Produto", b =>
                 {
                     b.Property<int>("IdProduto")
                         .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ namespace Pedidos.Infraestrutura.Migrations
                     b.Property<int>("PedidoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantidate")
+                    b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
@@ -88,9 +88,9 @@ namespace Pedidos.Infraestrutura.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Pedidos.Dominio.Modelos.Produto", b =>
+            modelBuilder.Entity("Pedidos.Contrato.Modelos.Produto", b =>
                 {
-                    b.HasOne("Pedidos.Dominio.Modelos.Pedido", "Pedido")
+                    b.HasOne("Pedidos.Contrato.Modelos.Pedido", "Pedido")
                         .WithMany("Produtos")
                         .HasForeignKey("PedidoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -99,7 +99,7 @@ namespace Pedidos.Infraestrutura.Migrations
                     b.Navigation("Pedido");
                 });
 
-            modelBuilder.Entity("Pedidos.Dominio.Modelos.Pedido", b =>
+            modelBuilder.Entity("Pedidos.Contrato.Modelos.Pedido", b =>
                 {
                     b.Navigation("Produtos");
                 });

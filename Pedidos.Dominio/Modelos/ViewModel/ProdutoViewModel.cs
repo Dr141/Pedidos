@@ -1,4 +1,4 @@
-﻿namespace Pedidos.Dominio.Modelos.ViewModel
+﻿namespace Pedidos.Contrato.Modelos.ViewModel
 {
     public class ProdutoViewModel
     {

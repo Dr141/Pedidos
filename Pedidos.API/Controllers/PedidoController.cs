@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pedidos.Dominio.Modelos;
-using Pedidos.Dominio.Modelos.Dto;
+using Pedidos.Contrato.Modelos.Dto;
 using Pedidos.Infraestrutura.Negocios;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using Pedidos.Dominio.Modelos.ViewModel;
+using Pedidos.Contrato.Modelos.ViewModel;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -36,20 +34,21 @@ namespace Pedidos.API.Controllers
 
         // POST api/<PedidoController>
         [HttpPost("{nome}")]       
-        public async Task<ActionResult<string>> post(string nome)
+        public async Task<ActionResult<string>> Post(string nome)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    
                     var chave = await _pedidoBll.Adicionar(nome);
-                    return $"PedidoId: {chave}";
+                    return Ok($"PedidoId: {chave}");
                 }
                 throw new ArgumentException();
             }
             catch (Exception ex) 
             {
-                return ex.Message;
+                return BadRequest(ex.Message);
             }            
         }
 
@@ -62,13 +61,13 @@ namespace Pedidos.API.Controllers
                 if (ModelState.IsValid)
                 {
                     await _pedidoBll.AtualizarPedido(id, pedidoDto);
-                    return "Pedido atualizado.";
+                    return Ok("Pedido atualizado.");
                 }
                 throw new ArgumentException();
             }
             catch (Exception ex)
             {
-                return $"Ocorreu erro atualizando o pedido: {ex.Message}";
+                return BadRequest($"Ocorreu erro atualizando o pedido: {ex.Message}");
             }            
         }
     }
