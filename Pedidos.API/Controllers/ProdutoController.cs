@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pedidos.Dominio.Modelos;
-using Pedidos.Dominio.Modelos.Dto;
+using Pedidos.Contrato.Modelos;
+using Pedidos.Contrato.Modelos.Dto;
 using Pedidos.Infraestrutura.Negocios;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,39 +19,39 @@ namespace Pedidos.API.Controllers
 
         // POST api/<ProdutoController>
         [HttpPost("{PedidoID}")]
-        public async Task<string> Post(int PedidoID, [FromForm] ProdutoDto produto)
+        public async Task<ActionResult<string>> Post(int PedidoID, [FromForm] ProdutoDto produto)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     int resultado = await _produtoBll.AdicionarProduto(PedidoID, produto);
-                    return "Produto incluído com sucesso.";
+                    return Ok("Produto incluído com sucesso.");
                 }
                 throw new ArgumentException();
             }
             catch (Exception ex) 
             {
-                return $"Ocorreu erro: {ex.Message}";
+                return BadRequest($"Ocorreu erro: {ex.Message}");
             }
         }
 
         // DELETE api/<ProdutoController>/5
         [HttpDelete("{id}")]
-        public async Task<string> Delete(int id)
+        public async Task<ActionResult<string>> Delete(int id)
         {
             try
             {
                 await _produtoBll.RemoverProduto(id);
-                return "Produto removido com sucesso.";
+                return Ok("Produto removido com sucesso.");
             }
             catch (NullReferenceException ex) 
             {
-                return $"Ocorreu erro: Não foi encontrado produto com o ID {id}";
+                return NotFound($"Ocorreu erro: Não foi encontrado produto com o ID {id}");
             }
             catch (Exception ex)
             {
-                return $"Ocorreu erro: {ex.Message}";
+                return BadRequest($"Ocorreu erro: {ex.Message}");
             }
         }
     }

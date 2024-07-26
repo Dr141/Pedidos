@@ -38,7 +38,7 @@ namespace Pedidos.Infraestrutura.Migrations
                     DtAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PedidoId = table.Column<int>(type: "int", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Quantidate = table.Column<int>(type: "int", nullable: false),
+                    Quantidade = table.Column<int>(type: "int", nullable: false),
                     Valor = table.Column<decimal>(type: "decimal(14,2)", nullable: false)
                 },
                 constraints: table =>

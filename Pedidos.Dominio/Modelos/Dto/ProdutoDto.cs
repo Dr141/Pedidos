@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Pedidos.Dominio.Modelos.Dto
+namespace Pedidos.Contrato.Modelos.Dto
 {
     public class ProdutoDto
     {
@@ -8,7 +8,7 @@ namespace Pedidos.Dominio.Modelos.Dto
         public string? Nome { get; set; }
 
         [Required]
-        public int Quantidate { get; set; }
+        public int Quantidade { get; set; }
 
         [Required]
         public decimal Valor { get; set; }

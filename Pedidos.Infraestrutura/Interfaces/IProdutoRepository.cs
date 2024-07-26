@@ -1,10 +1,10 @@
-﻿using Pedidos.Dominio.Modelos;
+﻿using Pedidos.Contrato.Modelos;
 
 namespace Pedidos.Infraestrutura.Interfaces
 {
     public interface IProdutoRepository
     {
-        Task AdicionarProduto(Produto produto);
+        Task<int> AdicionarProduto(Produto produto);
 
         Task<IEnumerable<Produto>> ObterTodos();
 

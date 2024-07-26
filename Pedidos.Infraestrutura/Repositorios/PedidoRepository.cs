@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pedidos.Dominio.Modelos;
+using Pedidos.Contrato.Modelos;
 using Pedidos.Infraestrutura.Context;
 using Pedidos.Infraestrutura.Interfaces;
 

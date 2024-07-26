@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Pedidos.Dominio.Modelos;
-using Pedidos.Dominio.Modelos.Dto;
-using Pedidos.Dominio.Modelos.ViewModel;
+using Pedidos.Contrato.Modelos;
+using Pedidos.Contrato.Modelos.Dto;
+using Pedidos.Contrato.Modelos.ViewModel;
 
 namespace Pedidos.Infraestrutura.Mapeamentos
 {
@@ -23,7 +23,7 @@ namespace Pedidos.Infraestrutura.Mapeamentos
             CreateMap<Produto, ProdutoViewModel>()
            .ForMember(dest => dest.DtCriacao, opt => opt.MapFrom(src => src.DtCriacao))
            .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
-           .ForMember(dest => dest.Quantidate, opt => opt.MapFrom(src => src.Quantidate))
+           .ForMember(dest => dest.Quantidate, opt => opt.MapFrom(src => src.Quantidade))
            .ForMember(dest => dest.Valor, opt => opt.MapFrom(src => src.Valor))
            .ForMember(dest => dest.ProdutoId, opt => opt.MapFrom(src => src.IdProduto));
         }

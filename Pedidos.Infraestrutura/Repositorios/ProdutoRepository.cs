@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pedidos.Dominio.Modelos;
+using Pedidos.Contrato.Modelos;
 using Pedidos.Infraestrutura.Context;
 using Pedidos.Infraestrutura.Interfaces;
 
@@ -11,9 +11,10 @@ namespace Pedidos.Infraestrutura.Repositorios
         {
         }
 
-        public async Task AdicionarProduto(Produto produto)
+        public async Task<int> AdicionarProduto(Produto produto)
         {
             await AddAsync(produto);
+            return produto.IdProduto;
         }
 
         public void Atualizar(Produto produto)

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Pedidos.Dominio.Modelos;
-using Pedidos.Dominio.Modelos.Dto;
-using Pedidos.Dominio.Modelos.ViewModel;
+using Pedidos.Contrato.Modelos;
+using Pedidos.Contrato.Modelos.Dto;
+using Pedidos.Contrato.Modelos.ViewModel;
 using Pedidos.Infraestrutura.Interfaces;
 
 namespace Pedidos.Infraestrutura.Negocios

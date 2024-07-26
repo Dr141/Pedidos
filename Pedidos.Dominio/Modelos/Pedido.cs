@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Pedidos.Dominio.Modelos
+namespace Pedidos.Contrato.Modelos
 {
     public class Pedido
     {
